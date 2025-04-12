@@ -17,13 +17,13 @@ export default function Home() {
       body: JSON.stringify(formData),
     });
     const data = await res.json();
-    console.log(data);
+    alert(`Plan created: ${JSON.stringify(data)}`);
   };
 
   return (
-    <main className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Training Plan Generator</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-sm">
+    <main style={{ padding: '2rem' }}>
+      <h1>Training Plan Generator</h1>
+      <form onSubmit={handleSubmit}>
         <label>
           Race Type:
           <select name="raceType" value={formData.raceType} onChange={handleChange}>
@@ -33,7 +33,7 @@ export default function Home() {
             <option value="140.6">Full Ironman</option>
           </select>
         </label>
-        <button type="submit" className="bg-black text-white py-2 rounded">Generate Plan</button>
+        <button type="submit">Generate Plan</button>
       </form>
     </main>
   );
