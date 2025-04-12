@@ -1,40 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-
 export default function Home() {
-  const [formData, setFormData] = useState({ raceType: 'sprint' });
-
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const res = await fetch('/api/generate-plan', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-    const data = await res.json();
-    alert(`Plan created: ${JSON.stringify(data)}`);
-  };
-
   return (
     <main style={{ padding: '2rem' }}>
-      <h1>Training Plan Generator</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Race Type:
-          <select name="raceType" value={formData.raceType} onChange={handleChange}>
-            <option value="sprint">Sprint</option>
-            <option value="olympic">Olympic</option>
-            <option value="70.3">Half Ironman</option>
-            <option value="140.6">Full Ironman</option>
-          </select>
-        </label>
-        <button type="submit">Generate Plan</button>
-      </form>
+      <h1>Hello World</h1>
     </main>
   );
 }
+
